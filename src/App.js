@@ -10,7 +10,7 @@ import Home from './routes/home';
 import Login from './routes/login';
 import Profile from './routes/profile';
 import NotFound from './routes/not-found';
-import Books from './components/Books/Books'
+import Books from './routes/books'
 /* todo fleiri routes */
 
 import './App.css';
