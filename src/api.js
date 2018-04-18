@@ -1,11 +1,12 @@
 
 const baseurl = process.env.REACT_APP_SERVICE_URL;
 
-async function get(endpoint) {
+export async function get(endpoint) {
 
   const token = window.localStorage.getItem('token');
 
   const url = `${baseurl}${endpoint}`;
+  const response = await fetch(url);
 
   const options = {
     headers: {},
@@ -15,11 +16,19 @@ async function get(endpoint) {
     options.headers['Authorization'] = `Bearer ${token}`;
   }
 
-  /* todo framkvæma get */
+  const result = await response.json();
+
+  return { result, status: response.status };
 }
 
-/* todo aðrar aðgerðir */
+/*export async function post(endpoint, data) {
+  const url = `${baseurl}${endpoint}`;
 
-export default {
-  get,
-};
+  const options = {
+    body: JSON.stringify(data),
+    headers: {
+      'content-type': 'application/json',
+    },
+    method: 'POST',
+  };
+  */
