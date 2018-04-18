@@ -6,14 +6,14 @@ import Button from '../../components/button'
 
 /* todo sækja actions frá ./actions */
 
-import './Login.css';
+import './Register.css';
 
-class Login extends Component {
+class Register extends Component {
 
   render() {
     return (
       <div>
-        <h1>Innskráning </h1>
+        <h1>Nýskráning </h1>
         <p>í augnablikinu er þetta bara form, á eftir að setja alla virkni upp....</p>
 
         <form class="form">
@@ -25,10 +25,10 @@ class Login extends Component {
             <label> Lykilorð: </label>
             <input type="password" />
           </div>
-          <Button> Innskrá </Button>
+          <Button> Nýskrá </Button>
         </form>
 
-        <Link to="/register"> Nýskráning </Link>
+        <Link to="/Login"> Innskráning </Link>
 
       </div>
     );
@@ -37,4 +37,4 @@ class Login extends Component {
 
 /* todo tengja við redux */
 
-export default Login;
+export default Register;
