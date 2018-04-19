@@ -5,7 +5,7 @@ const initialState = {
   user: [],
   error: null,
   errors: [],
-  message:[],
+  errors:[],
 };
 
 export default (state = initialState, action) => {
@@ -15,21 +15,24 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAdding: action.isAdding,
+        isDone: action.isDone,
         errors: [],
       };
     case REGISTER_ERROR:
       return {
         ...state,
         isAdding: action.isAdding,
+        isDone: action.isDone,
         errors: action.errors,
       };
     case REGISTER_SUCCESS:
       return {
         ...state,
         isAdding: action.isAdding,
+        isDone: action.isDone,
       //  user: [...state.user, action.user],
         user: action.user,
-        error: action.error,
+        errors: action.errors,
       };
 
     default:

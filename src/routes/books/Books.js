@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchBooks } from '../../actions/books';
 
-import Book from '../../components/books/Book';
+import Book from '../../components/Books/Book';
 
 class Books extends Component {
 

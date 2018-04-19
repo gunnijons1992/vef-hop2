@@ -8,6 +8,7 @@ function addingUser(user) {
   return {
     type: REGISTER_REQUEST,
     isAdding: false,
+    isDone: false,
     errors: null,
   }
 }
@@ -16,6 +17,7 @@ function addUserError(errors) {
   return {
     type: REGISTER_ERROR,
     isAdding: false,
+    isDone: false,
     errors,
   }
 }
@@ -24,6 +26,7 @@ function receiveAddUser(user) {
   return {
     type: REGISTER_SUCCESS,
     isAdding: false,
+    isDone: true,
     user,
     errors: null,
   }
@@ -37,7 +40,7 @@ export const addUser = (username, password, name) => {
     try {
       user = await post('register', { username, password, name });
     } catch (e) {
-      return dispatch(addUserError([{ message: e }]))
+      return dispatch(addUserError([{ errors: e }]))
     }
 
     if (user.status === 400) {

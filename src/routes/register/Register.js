@@ -36,29 +36,31 @@ class Register extends Component {
 
   render() {
     const { username, password, name } = this.state;
-    const { isAdding, errors } = this.props;
-    
+    const { isAdding, isDone, errors } = this.props;
+
   /*  let partners = this.props && this.props.errors.length > 0 ?
         this.props.part.map(p=>
             <li className = "partners" key={p.id}>
                 <img src={p.img} alt={p.name}/> {p.name} </li>
         ) : <span></span>*/
+    if (isDone) {
+      return (
+        <p>Click here to return to <Link to="/login">login</Link></p>
+        );
+      }
 
     if (isAdding) {
       return (
         <p>Skrái atriði...</p>
       );
     }
-  console.log(errors[0])
+  //console.log(errors[0])
     return (
       <div>
-        {errors && (
-          <ul>{errors.map((error, i) => (
-            <li key={i}>
-              {error.message}
-            </li>
-          ))}</ul>
-        )}
+      { errors && (
+         <p>{errors.toString()}</p>
+       )}
+
         <div>
           <h1>Nýskráning </h1>
           <p>í augnablikinu er þetta bara form, á eftir að setja alla virkni upp....</p>
@@ -103,6 +105,7 @@ class Register extends Component {
 const mapStateToProps = (state) => {
   return {
     isAdding: state.register.isAdding,
+    isDone: state.register.isDone,
     errors: state.register.errors,
   }
 }
