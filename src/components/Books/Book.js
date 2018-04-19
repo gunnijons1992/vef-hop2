@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 //import './Note.css';
 
-export default class Note extends Component {
+export default class Book extends Component {
   static propTypes = {
     id: PropTypes.number,
     title: PropTypes.string,

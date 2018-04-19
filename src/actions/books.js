@@ -75,13 +75,13 @@ export const fetchBooks = () => {
   }
 }
 
-/*export const addBook = (title, text, datetime) => {
+export const addBook = (title, text, datetime) => {
   return async (dispatch) => {
     dispatch(addingBook());
 
     let book;
     try {
-      book = await post('/', { title, text, datetime });
+      book = await post('/register', { title, text, datetime });
     } catch (e) {
       return dispatch(addBooksError([{ message: e }]))
     }
@@ -93,4 +93,3 @@ export const fetchBooks = () => {
     dispatch(receiveAddBook(book.result))
   }
 }
-*/

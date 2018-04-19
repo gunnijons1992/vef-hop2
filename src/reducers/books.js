@@ -48,7 +48,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAdding: action.isAdding,
-        books: [...state.books, action.note],
+        books: [...state.books, action.book],
         error: action.error,
       };
 

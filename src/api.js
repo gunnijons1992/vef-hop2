@@ -21,7 +21,7 @@ export async function get(endpoint) {
   return { result, status: response.status };
 }
 
-/*export async function post(endpoint, data) {
+export async function post(endpoint, data) {
   const url = `${baseurl}${endpoint}`;
 
   const options = {
@@ -31,4 +31,10 @@ export async function get(endpoint) {
     },
     method: 'POST',
   };
-  */
+
+  const response = await fetch(url, options);
+
+  const result = await response.json();
+
+  return { result, status: response.status };
+}
