@@ -3,6 +3,7 @@ import { post } from '../api';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_ERROR = 'REGISTER_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_LOGOUT = 'LOGIN_LOGOUT';
 
 function requestLogin(user) {
   return {
@@ -32,6 +33,15 @@ function recieveLogin(user) {
   }
 }
 
+function logout() {
+  return {
+    type: LOGIN_LOGOUT,
+    isFetching: false,
+    isAuthenticated: false,
+    user: null,
+  }
+}
+
 export const loginUser = (username, password) => {
   return async (dispatch) => {
     dispatch(requestLogin());
@@ -53,5 +63,13 @@ export const loginUser = (username, password) => {
       localStorage.setItem('token', token);
       dispatch(recieveLogin(user));
     }
+  }
+}
+
+export const logoutUser = () => {
+  return async (dispatch) => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    dispatch(logout());
   }
 }

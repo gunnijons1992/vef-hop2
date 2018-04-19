@@ -2,6 +2,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_ERROR,
   LOGIN_SUCCESS,
+  LOGIN_LOGOUT,
 } from '../actions/auth';
 
 const user = JSON.parse(localStorage.getItem('user') || 'null');
@@ -36,6 +37,14 @@ export default (state = initialState, action) => {
         isFetching: action.isFetching,
         isAuthenticated: action.isAuthenticated,
         errors: action.errors,
+      }
+
+      case LOGIN_LOGOUT:
+        return {
+          ...state,
+          isFetching: action.isFetching,
+          isAuthenticated: action.isAuthenticated,
+          user: action.user,
       }
     default:
       return state;
