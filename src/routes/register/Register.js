@@ -37,16 +37,7 @@ class Register extends Component {
   render() {
     const { username, password, name } = this.state;
     const { isAdding, errors } = this.props;
-    console.log(errors);
-    let arr = [errors.errors];
-    let b = arr.map(getFullName);
-    function getFullName(item, index) {
-    var fullname = [item.message];
-    return fullname;
-    }
-    let i  = errors.map(arr);
-    console.log(arr)
-    console.log(i)
+    
   /*  let partners = this.props && this.props.errors.length > 0 ?
         this.props.part.map(p=>
             <li className = "partners" key={p.id}>
