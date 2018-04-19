@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link , Redirect, NavLink, Route } from 'react-router-dom';
 import Button from '../../components/button'
+import { loginUser } from '../../actions/auth';
+
 //import { loginUser, logoutUser } from '../actions/auth';
 
 /* todo sækja actions frá ./actions */
@@ -10,31 +12,95 @@ import './Login.css';
 
 class Login extends Component {
 
+  state = {
+    username: '',
+    password: '',
+  }
+
+
+
+  handleInputChange = (e) => {
+    const { name, value } = e.target;
+    if (name) {
+      this.setState({ [name]: value });
+    }
+    }
+
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+      const { dispatch } = this.props;
+      const { username, password } = this.state;
+      dispatch(loginUser(username, password));
+      }
+
   render() {
+    const { username, password, name } = this.state;
+    const { isFetching, isAuthenticated, errors } = this.props;
+
+  /*  let partners = this.props && this.props.errors.length > 0 ?
+        this.props.part.map(p=>
+            <li className = "partners" key={p.id}>
+                <img src={p.img} alt={p.name}/> {p.name} </li>
+        ) : <span></span>*/
+        if (isAuthenticated) {
+          return (
+            <p>Þú ert núna innskráður</p>
+          );
+        }
+
+    if (isFetching) {
+      return (
+        <p>Skrái þig inn...</p>
+      );
+    }
+  //console.log(errors[0])
     return (
       <div>
-        <h1>Innskráning </h1>
-        <p>í augnablikinu er þetta bara form, á eftir að setja alla virkni upp....</p>
+      { errors && (
+         <p>{errors.toString()}</p>
+       )}
 
-        <form class="form">
-          <div>
-            <label> Notendanafn: </label>
-            <input type="text" />
-          </div>
-          <div>
-            <label> Lykilorð: </label>
-            <input type="password" />
-          </div>
-          <Button> Innskrá </Button>
-        </form>
-
-        <Link to="/register"> Nýskráning </Link>
-
+        <div>
+          <h1>Innskráning </h1>
+        </div>
+        <div id="parent">
+          <form className="form" name="form" onSubmit={this.handleSubmit}>
+            <div id="register">
+              <div className="form-group">
+                <label htmlFor="username"> Notendanafn: </label>
+                <div>
+                  <input type="text" id="username" required="required" name="username"
+                  value={username} onChange={this.handleInputChange} />
+                </div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="password"> Lykilorð: </label>
+                <div>
+                  <input type="password" id="password" required="required" name="password"
+                  value={password} onChange={this.handleInputChange} />
+                </div>
+                <div className="form-group">
+                  <Button disabled={isFetching} type="submit" id="register_submit"> Innskrá </Button>
+                </div>
+              </div>
+            </div>
+            </form>
+          <Link to="/Register"> Nýskráning </Link>
+        </div>
       </div>
     );
   }
 }
 
+
+const mapStateToProps = (state) => {
+  return {
+    isFetching: state.register.isFetching,
+    isAuthenticated: state.register.isAuthenticated,
+    errors: state.register.errors,
+  }
+}
 /* todo tengja við redux */
 
-export default Login;
+export default connect(mapStateToProps)(Login);
