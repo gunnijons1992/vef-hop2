@@ -36,7 +36,7 @@ class Register extends Component {
 
   render() {
     const { username, password, name } = this.state;
-    const { isAdding, isDone, errors } = this.props;
+    const { isAdding, isDone, message } = this.props;
 
   /*  let partners = this.props && this.props.errors.length > 0 ?
         this.props.part.map(p=>
@@ -58,20 +58,14 @@ class Register extends Component {
   //console.log(errors)
     return (
       <div>
-      { errors && (
-
-        <ul>{errors.message.map((error, i) => (
-           <li key={i}>
-             {error.message},
-           </li>
-       ))}</ul>
-     )}
-
-         <p>{errors.message}</p>
-       )}
-
-        <div>
-          <h1>Nýskráning </h1>
+      <div>
+        <h1>Nýskráning </h1>
+          {message && (message.map((error) => {
+            return (
+              <h3>{error.message}</h3>
+            )
+          }))
+      }
         </div>
         <div id="parent">
           <form className="form" name="form" onSubmit={this.handleSubmit}>
@@ -114,7 +108,7 @@ const mapStateToProps = (state) => {
   return {
     isAdding: state.register.isAdding,
     isDone: state.register.isDone,
-    errors: state.register.errors,
+    message: state.register.message,
   }
 }
 /* todo tengja við redux */

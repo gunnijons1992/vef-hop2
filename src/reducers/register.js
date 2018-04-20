@@ -3,8 +3,9 @@ import { REGISTER_REQUEST, REGISTER_ERROR, REGISTER_SUCCESS } from '../actions/r
 const initialState = {
   isAdding: false,
   user: [],
-  error: null,
+  isDone: false,
   errors: [],
+  message: null,
 };
 
 export default (state = initialState, action) => {
@@ -22,16 +23,14 @@ export default (state = initialState, action) => {
         ...state,
         isAdding: action.isAdding,
         isDone: action.isDone,
-        errors: action.errors,
+        message: action.message,
       };
     case REGISTER_SUCCESS:
       return {
         ...state,
         isAdding: action.isAdding,
         isDone: action.isDone,
-      //  user: [...state.user, action.user],
-        user: action.user,
-        errors: action.errors,
+        message: action.message,
       };
 
     default:
