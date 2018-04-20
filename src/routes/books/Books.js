@@ -4,7 +4,10 @@ import { fetchBooks } from '../../actions/books';
 
 import Book from '../../components/Books/Book';
 
+import './Books.css';
+
 const queryString = require('query-string');
+
 
 class Books extends Component {
 
@@ -29,6 +32,7 @@ class Books extends Component {
     }
   }
 
+
   render() {
     const { isFetching, books } = this.props;
 
@@ -37,13 +41,13 @@ class Books extends Component {
 
     if (isFetching) {
       return (
-        <p>Sæki minnisatriði..</p>
+        <p>Sæki Bækur..</p>
       );
     }
 
     return (
       <section>
-        <h2>Minnisatriði</h2>
+        <h2>Bækur</h2>
         <ul>
           {books.map((book) => {
             return (
