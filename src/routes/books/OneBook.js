@@ -42,6 +42,10 @@ class OneBook extends Component {
           author={book.author}
           published={book.published}
           isbn13={book.isbn13}
+          categorytitle={book.categorytitle}
+          description={book.description}
+          pagecount={book.pagecount}
+          language={book.language}
         //  onHeaderClick={(this.onHeaderClick(book.id))}
         />
         </ul>

@@ -81,7 +81,7 @@ handleInputChange = (e) => {
         {isAuthenticated &&
         <button className="button" onClick={this.handleLogout}>Útskrá</button>}
         {!isAuthenticated &&
-        <Link to="/login">Innskráning</Link> }
+        <Button onClick={this.handlelogin}><Link to="/login">Innskráning</Link></Button> }
       </header>
     );
   }
