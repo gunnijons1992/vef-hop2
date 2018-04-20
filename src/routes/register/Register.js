@@ -45,7 +45,7 @@ class Register extends Component {
         ) : <span></span>*/
     if (isDone) {
       return (
-        <p>Click here to return to <Link to="/login">login</Link></p>
+        <p>Ýttu hér til að skrá þig inn : <Link to="/login">innskráning</Link></p>
         );
       }
 

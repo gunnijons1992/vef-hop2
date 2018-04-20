@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../button';
+import { Link } from 'react-router-dom';
 
 
 //import './Note.css';
@@ -24,7 +25,10 @@ export default class OneBook extends Component {
   }
 
   render() {
+
+    const token = window.localStorage.getItem('user');
     const { id, title, author, published, isbn13, categorytitle, description, pagecount, language } = this.props;
+    if(token != null){
     return (
       <li className="onebook">
         <h3>{title}</h3>
@@ -41,5 +45,23 @@ export default class OneBook extends Component {
           </div>
       </li>
     );
+  }
+  else{
+    return (
+      <li className="onebook">
+        <h3>{title}</h3>
+          <div>
+            <p>Eftir: {author}</p>
+            <p>Gefin út: {published}</p>
+            <p>Númer bókar: {isbn13}</p>
+            <p>Týpa bókar: {categorytitle}</p>
+            <p>Lýsing: {description}</p>
+            <p>{pagecount} síður </p>
+            <p>Tungumál: {language}</p>
+            <Button>Til baka</Button>
+          </div>
+      </li>
+    );
+  }
   }
 }
