@@ -17,7 +17,7 @@ export default class User extends Component {
   render() {
     const { id, name} = this.props;
     return (
-      <li className="book">
+      <li>
         <h3>{id}</h3>
           <div>
             <h3>{name}</h3>

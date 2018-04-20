@@ -12,12 +12,7 @@ console.log(token);
 class Users extends Component {
 
 
-  /*onHeaderClick = (bookId) => {
-    return (e) => {
-      const visibleNote = this.state.visibleNote === bookId ? null : bookId;
-      this.setState({ visibleNote });
-    }
-  }*/
+
   componentDidMount(){
 
     const { dispatch, isAuthenticated } = this.props;
@@ -30,9 +25,6 @@ class Users extends Component {
 
   render() {
     const { isFetching, users } = this.props;
-
-    //console.log(books);
-
 
     if (isFetching) {
       return (
@@ -61,7 +53,7 @@ class Users extends Component {
 const mapStateToProps = (state) => {
   return {
     isFetching: state.users.isFetching,
-    users: state.users.books,
+    users: state.users.users,
     error: state.users.error,
     isAuthenticated: state.auth.isAuthenticated,
   }

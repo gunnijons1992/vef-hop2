@@ -36,9 +36,9 @@ class App extends Component {
             <Route path="/register" exact component={Register} />
             <Route path="/books" exact component={Books}  />
             <Route path="/books/:id" exact component={OneBook}  />
+            <Route path="/books?search=query" component={Books} />
             <UserRoute path="/profile" isAuthenticated={isAuthenticated} component={Profile} />
             {/* todo fleiri route */}
-            <Route path="/books?search=query" component={Books} />
             <UserRoute path="/users" isAuthenticated={isAuthenticated} component={Users} />
             <Route component={NotFound} />
           </Switch>

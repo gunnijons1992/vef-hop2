@@ -28,8 +28,8 @@ class Books extends Component {
     const query = this.props.location.search;
     //console.log(this.props.location.offset);
     const parsedQuery = queryString.parse(query);
+    const par = this.props.match;
     if (query) {
-      console.log("query");
       dispatch(fetchBooks(`books?search=${parsedQuery.search}`));
     }
     else {
@@ -59,7 +59,7 @@ class Books extends Component {
   render() {
     const { isFetching, books } = this.props;
 
-    //console.log(books);
+    console.log(books);
 
 
     if (isFetching) {

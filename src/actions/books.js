@@ -15,7 +15,7 @@ function requestBooks() {
 function booksError(error) {
   return {
     type: BOOKS_ERROR,
-    isFetching: true,
+    isFetching: false,
     books: [],
     error: error,
   }
