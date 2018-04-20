@@ -38,12 +38,11 @@ class App extends Component {
             <Route path="/books/:id" exact component={OneBook}  />
             <UserRoute path="/profile" isAuthenticated={isAuthenticated} component={Profile} />
             {/* todo fleiri route */}
-            <Route path="/books?search=:query" component={Books} />
+            <Route path="/books?search=query" component={Books} />
             <UserRoute path="/users" isAuthenticated={isAuthenticated} component={Users} />
             <Route component={NotFound} />
           </Switch>
         </div>
-
       </main>
     );
   }
