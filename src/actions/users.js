@@ -1,12 +1,12 @@
 import { get } from '../api';
 
-export const USER_REQUEST = 'USER_REQUEST';
-export const USER_ERROR = 'USER_ERROR';
-export const USER_SUCCESS = 'USER_SUCCESS';
+export const USERS_REQUEST = 'USERS_REQUEST';
+export const USERS_ERROR = 'USERS_ERROR';
+export const USERS_SUCCESS = 'USERS_SUCCESS';
 
 function requestUsers() {
   return {
-    type: USER_REQUEST,
+    type: USERS_REQUEST,
     isFetching: true,
     error: null,
   }
@@ -14,7 +14,7 @@ function requestUsers() {
 
 function usersError(error) {
   return {
-    type: USER_ERROR,
+    type: USERS_ERROR,
     isFetching: true,
     users: [],
     error: error,
@@ -23,7 +23,7 @@ function usersError(error) {
 
 function receiveUsers(users) {
   return {
-    type: USER_SUCCESS,
+    type: USERS_SUCCESS,
     isFetching: false,
     users,
     error: null,
@@ -34,14 +34,15 @@ export const getUsers = (endpoint) => {
     dispatch(requestUsers());
     let users;
     try {
-      users = await get(endpoint);
+      users = await get('users');
     } catch (e) {
       return dispatch(usersError(e))
     }
 
     if (users.status >= 400) {
-      return dispatch(userErrors(users.result.error))
+      return dispatch(usersError(users.result.error))
     }
-    dispatch(receiveUsers(users.result));
+    console.log(users.result.items)
+    dispatch(receiveUsers(users.result.items));
   }
 }

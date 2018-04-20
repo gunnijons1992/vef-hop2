@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { Route, NavLink, Link, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 
 import UserRoute from './components/user-route';
 import Header from './components/header';
@@ -13,7 +13,7 @@ import Profile from './routes/profile';
 import NotFound from './routes/not-found';
 import Books from './routes/books';
 import OneBook from './routes/books/OneBook'
-//import Users from './routes/users/Users';
+import Users from './routes/users/Users';
 /* todo fleiri routes */
 
 import './App.css';
@@ -39,7 +39,7 @@ class App extends Component {
             <UserRoute path="/profile" isAuthenticated={isAuthenticated} component={Profile} />
             {/* todo fleiri route */}
             <Route path="/books?search=:query" component={Books} />
-            {/*<UserRoute path="/users" isAuthenticated={isAuthenticated} component={Users} />*/}
+            <UserRoute path="/users" isAuthenticated={isAuthenticated} component={Users} />
             <Route component={NotFound} />
           </Switch>
         </div>

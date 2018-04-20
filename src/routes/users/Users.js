@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUsers } from '../../actions/users';
-import { NavLink } from 'react-router-dom'
 
-import './Users.css'
+import User from '../../components/users/User';
+
+import './Users.css';
+
+const token = window.localStorage.getItem('token');
+console.log(token);
 
 class Users extends Component {
 
+
+  /*onHeaderClick = (bookId) => {
+    return (e) => {
+      const visibleNote = this.state.visibleNote === bookId ? null : bookId;
+      this.setState({ visibleNote });
+    }
+  }*/
   componentDidMount(){
 
     const { dispatch, isAuthenticated } = this.props;
@@ -16,41 +27,43 @@ class Users extends Component {
     }
   }
 
-    render(){
-       const { isFetching, users } = this.props;
 
-       if(isFetching){
-         return(
-           <p>Sæki notendur</p>
-         );
-       }
-       return(
-         <section>
-         <h2>Notendur</h2>
-         <ul>
-           {users.map((user) => (
-             <h3>
-               <li key={user.id}>
-                 <NavLink exact
-                   to={`/users/${user.id}`}>
-                   {user.name}
-                 </NavLink>
-               </li>
-             </h3>
-           ))}
-         </ul>
-         </section>
-      }
+  render() {
+    const { isFetching, users } = this.props;
+
+    //console.log(books);
+
+
+    if (isFetching) {
+      return (
+        <p>Sæki Notendur..</p>
+      );
+    }
+
+    return (
+      <section>
+        <h2>Notendur</h2>
+        <ul>
+          {users.map((user) => {
+            return (
+              <a href={"/users/"+ user.id}><User
+                key={user.id}
+                name={user.name}
+              /></a>
+            )
+          })}
+        </ul>
+      </section>
+    );
   }
-
+}
 
 const mapStateToProps = (state) => {
-
   return {
     isFetching: state.users.isFetching,
-    users: state.users.users,
+    users: state.users.books,
     error: state.users.error,
-    isAuthenticated: state.users.isAuthenticated,
+    isAuthenticated: state.auth.isAuthenticated,
   }
 }
 

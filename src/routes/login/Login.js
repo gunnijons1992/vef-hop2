@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link , Redirect, NavLink, Route } from 'react-router-dom';
+import { Link , Redirect, Route } from 'react-router-dom';
 import Button from '../../components/button'
 import { loginUser } from '../../actions/auth';
 
@@ -28,14 +28,14 @@ class Login extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-      const { dispatch, isAuthenticated } = this.props;
+      const { dispatch } = this.props;
       const { username, password } = this.state;
       dispatch(loginUser(username, password));
       }
 
   render() {
     const { username, password } = this.state;
-    const { dispatch, isFetching, isAuthenticated, errors } = this.props;
+    const { isFetching, isAuthenticated, errors } = this.props;
 
   /*  let partners = this.props && this.props.errors.length > 0 ?
         this.props.part.map(p=>

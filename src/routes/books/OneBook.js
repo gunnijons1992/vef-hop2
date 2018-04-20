@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchBook } from '../../actions/book';
-import PropTypes from 'prop-types';
 
 import Onebook from '../../components/Books/OneBook';
 
@@ -23,7 +22,7 @@ class OneBook extends Component {
   }
 
   render() {
-    const { isFetching, isDone, book } = this.props;
+    const { isFetching, book } = this.props;
     console.log(book);
 
     if (isFetching) {

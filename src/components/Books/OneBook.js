@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../button';
-import { Link } from 'react-router-dom';
 
 
 //import './Note.css';
 
 export default class OneBook extends Component {
   static propTypes = {
-    id: PropTypes.number,
     title: PropTypes.string,
     author: PropTypes.string,
     published: PropTypes.string,
@@ -27,7 +25,7 @@ export default class OneBook extends Component {
   render() {
 
     const token = window.localStorage.getItem('user');
-    const { id, title, author, published, isbn13, categorytitle, description, pagecount, language } = this.props;
+    const { title, author, published, isbn13, categorytitle, description, pagecount, language } = this.props;
     if(token != null){
     return (
       <li className="onebook">

@@ -1,4 +1,4 @@
-import { get, post } from '../api';
+import { get } from '../api';
 
 export const BOOK_REQUEST = 'BOOK_REQUEST';
 export const BOOK_ERROR = 'BOOK_ERROR';

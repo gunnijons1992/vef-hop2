@@ -3,18 +3,24 @@ const baseurl = process.env.REACT_APP_SERVICE_URL;
 
 export async function get(endpoint) {
 
-  const token = window.localStorage.getItem('token');
+  let token = window.localStorage.getItem('token');
+  console.log(token);
 
   const url = `${baseurl}${endpoint}`;
-  const response = await fetch(url);
 
   const options = {
-    headers: {},
+    headers: {
+      'content-type': 'application/json',
+    },
+    method: 'GET',
   };
 
   if (token) {
-    options.headers['Authorization'] = `Bearer ${token}`;
+    options.headers.set('Authorization', `Bearer ${token}`);
   }
+
+
+  const response = await fetch(url, options);
 
   const result = await response.json();
 
