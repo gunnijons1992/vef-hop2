@@ -35,6 +35,7 @@ class App extends Component {
             <Route path="/books" exact component={Books}  />
             <UserRoute path="/profile" isAuthenticated={isAuthenticated} component={Profile} />
             {/* todo fleiri route */}
+            <Route path="/books?search=:query" component={Books} />
             <Route component={NotFound} />
           </Switch>
         </div>

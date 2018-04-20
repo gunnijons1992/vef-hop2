@@ -5,7 +5,6 @@ const initialState = {
   user: [],
   error: null,
   errors: [],
-  errors:[],
 };
 
 export default (state = initialState, action) => {

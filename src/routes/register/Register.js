@@ -58,7 +58,7 @@ class Register extends Component {
     return (
       <div>
       { errors && (
-         <p>{errors.toString()}</p>
+         <p>{errors.message}</p>
        )}
 
         <div>

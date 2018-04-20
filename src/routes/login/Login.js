@@ -18,7 +18,6 @@ class Login extends Component {
   }
 
 
-
   handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name) {
@@ -29,14 +28,14 @@ class Login extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-      const { dispatch } = this.props;
+      const { dispatch, isAuthenticated } = this.props;
       const { username, password } = this.state;
       dispatch(loginUser(username, password));
       }
 
   render() {
-    const { username, password, name } = this.state;
-    const { isFetching, isAuthenticated, errors } = this.props;
+    const { username, password } = this.state;
+    const { dispatch, isFetching, isAuthenticated, errors } = this.props;
 
   /*  let partners = this.props && this.props.errors.length > 0 ?
         this.props.part.map(p=>
@@ -44,9 +43,7 @@ class Login extends Component {
                 <img src={p.img} alt={p.name}/> {p.name} </li>
         ) : <span></span>*/
         if (isAuthenticated) {
-          return (
-            <p>Þú ert núna innskráður</p>
-          );
+          return (<p>þú ert núna innskráður</p>);
         }
 
     if (isFetching) {
@@ -96,9 +93,9 @@ class Login extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isFetching: state.register.isFetching,
-    isAuthenticated: state.register.isAuthenticated,
-    errors: state.register.errors,
+    isFetching: state.auth.isFetching,
+    isAuthenticated: state.auth.isAuthenticated,
+    errors: state.auth.errors,
   }
 }
 /* todo tengja við redux */

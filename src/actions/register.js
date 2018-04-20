@@ -40,13 +40,13 @@ export const addUser = (username, password, name) => {
     try {
       user = await post('register', { username, password, name });
     } catch (e) {
-      return dispatch(addUserError([{ errors: e }]))
+      return dispatch(addUserError({ errors: e }))
     }
 
     if (user.status === 400) {
       let array = Array.from(user.result.errors);
       console.log(user);
-      console.log(user.result.errors)
+      //console.log(user.result.errors)
       return dispatch(addUserError(user.result))
 
     }

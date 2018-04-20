@@ -60,13 +60,13 @@ function receiveAddBook(book) {
   }
 }
 
-export const fetchBooks = () => {
+export const fetchBooks = (endpoint) => {
   return async (dispatch) => {
     dispatch(requestBooks());
 
     let books;
     try {
-      books = await get('books');
+      books = await get(endpoint);
     } catch (e) {
       return dispatch(booksError(e))
     }
