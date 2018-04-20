@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-//import './Note.css';
+import './Book.css';
 
 export default class Book extends Component {
   static propTypes = {
@@ -21,7 +21,7 @@ export default class Book extends Component {
       <li className="book">
         <h3>{id}</h3>
           <div>
-            <p>{title}</p>
+            <h3>{title}</h3>
             <p>{author}</p>
           </div>
       </li>

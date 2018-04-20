@@ -55,9 +55,12 @@ handleInputChange = (e) => {
   dispatch(logoutUser());
 }
 
+
   render() {
 
   const { isAuthenticated } = this.props;
+  const user = window.localStorage.getItem('user');
+  const parsedUser = JSON.parse(user);
 
     return (
       <header className="header">
@@ -79,9 +82,20 @@ handleInputChange = (e) => {
           </form>
         </div>
         {isAuthenticated &&
-        <button className="button" onClick={this.handleLogout}>Útskrá</button>}
+          <div>
+            <NavLink exact
+            to= '/profile'>
+            {parsedUser.name}
+          </NavLink>
+          <NavLink exact
+            to= '/profile'>
+            {parsedUser.image}
+          </NavLink>
+        <Button onClick={this.handleLogout}>Útskrá</Button>
+        </div>
+      }
         {!isAuthenticated &&
-        <Button onClick={this.handlelogin}><Link to="/login">Innskráning</Link></Button> }
+        <Button><Link to="/login">Innskráning</Link></Button> }
       </header>
     );
   }

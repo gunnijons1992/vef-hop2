@@ -43,7 +43,14 @@ class Login extends Component {
                 <img src={p.img} alt={p.name}/> {p.name} </li>
         ) : <span></span>*/
         if (isAuthenticated) {
-          return (<p>þú ert núna innskráður</p>);
+          return (
+            <div>
+              <Route path="/login" render={() => (
+                <div>
+                  <Redirect to={'/'}/>
+                  </div>
+              )}/>
+          </div>);
         }
 
     if (isFetching) {
