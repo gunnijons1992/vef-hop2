@@ -39,10 +39,6 @@ class App extends Component {
             <UserRoute path="/profile" isAuthenticated={isAuthenticated} component={Profile} />
             {/* todo fleiri route */}
             <Route path="/books?search=query" component={Books} />
-<<<<<<< HEAD
-=======
-
->>>>>>> 799464d341c573266a480c1ddb1ad8e7bf52428e
             <UserRoute path="/users" isAuthenticated={isAuthenticated} component={Users} />
             <Route component={NotFound} />
           </Switch>
