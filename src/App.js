@@ -20,7 +20,7 @@ import './App.css';
 class App extends Component {
 
   render() {
-    const authenticated = false; /* vita hvort notandi sé innskráður */
+    const { isAuthenticated } = this.props; /* vita hvort notandi sé innskráður */
 
     return (
       <main className="main">
@@ -35,8 +35,9 @@ class App extends Component {
             <Route path="/register" exact component={Register} />
             <Route path="/books" exact component={Books}  />
             <Route path="/books/:id" exact component={OneBook}  />
-            <UserRoute path="/profile" authenticated={authenticated} component={Profile} />
+            <UserRoute path="/profile" isAuthenticated={isAuthenticated} component={Profile} />
             {/* todo fleiri route */}
+            <Route path="/books?search=:query" component={Books} />
             <Route component={NotFound} />
           </Switch>
         </div>
@@ -47,11 +48,10 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  /* todo stilla redux ef það er notað */
   return {
+    ...state,
     isAuthenticated: state.auth.isAuthenticated,
   }
-
 }
 
 export default withRouter(connect(mapStateToProps)(App));

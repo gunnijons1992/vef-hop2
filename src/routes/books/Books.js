@@ -4,11 +4,10 @@ import { fetchBooks } from '../../actions/books';
 
 import Book from '../../components/Books/Book';
 
+const queryString = require('query-string');
+
 class Books extends Component {
 
-  state = {
-    visibleNote: null,
-  }
 
   /*onHeaderClick = (bookId) => {
     return (e) => {
@@ -18,12 +17,23 @@ class Books extends Component {
   }*/
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchBooks());
+    const query = this.props.location.search;
+
+    const parsedQuery = queryString.parse(query);
+
+    if (query) {
+      dispatch(fetchBooks(`books?search=${parsedQuery.search}`));
+    }
+    else {
+      dispatch(fetchBooks(`books`));
+    }
   }
 
   render() {
     const { isFetching, books } = this.props;
+
     //console.log(books);
+
 
     if (isFetching) {
       return (

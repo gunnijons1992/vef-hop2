@@ -59,15 +59,19 @@ class Register extends Component {
     return (
       <div>
       { errors && (
+
         <ul>{errors.message.map((error, i) => (
            <li key={i}>
              {error.message},
            </li>
        ))}</ul>
      )}
+
+         <p>{errors.message}</p>
+       )}
+
         <div>
           <h1>Nýskráning </h1>
-          <p>í augnablikinu er þetta bara form, á eftir að setja alla virkni upp....</p>
         </div>
         <div id="parent">
           <form className="form" name="form" onSubmit={this.handleSubmit}>

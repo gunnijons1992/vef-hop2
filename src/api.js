@@ -23,6 +23,12 @@ export async function get(endpoint) {
 
 export async function post(endpoint, data) {
   const url = `${baseurl}${endpoint}`;
+  //console.log(data);
+  //console.log(url);
+
+
+  const token = window.localStorage.getItem('token');
+  //console.log(token)
 
   const options = {
     body: JSON.stringify(data),
@@ -32,8 +38,12 @@ export async function post(endpoint, data) {
     method: 'POST',
   };
 
-  const response = await fetch(url, options);
+  if (token) {
+    options.headers['Authorization'] = `Bearer ${token}`;
+    //console.log(token)
+  }
 
+  const response = await fetch(url, options);
   const result = await response.json();
 
   return { result, status: response.status };
