@@ -13,6 +13,7 @@ import Profile from './routes/profile';
 import NotFound from './routes/not-found';
 import Books from './routes/books';
 import OneBook from './routes/books/OneBook'
+//import Users from './routes/users/Users';
 /* todo fleiri routes */
 
 import './App.css';
@@ -38,6 +39,7 @@ class App extends Component {
             <UserRoute path="/profile" isAuthenticated={isAuthenticated} component={Profile} />
             {/* todo fleiri route */}
             <Route path="/books?search=:query" component={Books} />
+            {/*<UserRoute path="/users" isAuthenticated={isAuthenticated} component={Users} />*/}
             <Route component={NotFound} />
           </Switch>
         </div>
