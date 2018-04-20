@@ -45,8 +45,8 @@ export const addUser = (username, password, name) => {
 
     if (user.status === 400) {
       let array = Array.from(user.result.errors);
-      console.log(user);
-      console.log(user.result.errors)
+      console.log(user.result);
+      //console.log(user.result.errors.message)
       return dispatch(addUserError(user.result))
 
     }

@@ -54,13 +54,17 @@ class Register extends Component {
         <p>Skrái atriði...</p>
       );
     }
-  //console.log(errors[0])
+  //console.log(errors.errors[0].message);
+  //console.log(errors)
     return (
       <div>
       { errors && (
-         <p>{errors.toString()}</p>
-       )}
-
+        <ul>{errors.message.map((error, i) => (
+           <li key={i}>
+             {error.message},
+           </li>
+       ))}</ul>
+     )}
         <div>
           <h1>Nýskráning </h1>
           <p>í augnablikinu er þetta bara form, á eftir að setja alla virkni upp....</p>

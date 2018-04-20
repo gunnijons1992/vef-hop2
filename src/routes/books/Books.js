@@ -23,7 +23,7 @@ class Books extends Component {
 
   render() {
     const { isFetching, books } = this.props;
-    console.log(books);
+    //console.log(books);
 
     if (isFetching) {
       return (
@@ -37,12 +37,12 @@ class Books extends Component {
         <ul>
           {books.map((book) => {
             return (
-              <Book
+              <a href={"/books/"+ book.id}><Book
                 key={book.id}
                 title={book.title}
                 author={book.author}
               //  onHeaderClick={(this.onHeaderClick(book.id))}
-              />
+              /></a>
             )
           })}
         </ul>
